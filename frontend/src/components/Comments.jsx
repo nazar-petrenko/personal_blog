@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Comments.css";
 import { useAuth } from "../context/AuthContext";
+import { useApi } from "../hooks/useApi";
 
 export default function Comments({ articleId }) {
   const [comments, setComments] = useState([]);
   const [newContent, setNewContent] = useState("");
   const { user: currentUser, token } = useAuth();
   console.log("Token:", token);
+  const api = useApi();
+  
   useEffect(() => {
-    
-    fetch(`/api/comments/${articleId}`)
-      .then((res) => res.json())
-      .then(setComments)
+    api
+      .get(`/comments/${articleId}`)
+      .then((res) => setComments(res.data))
       .catch((err) => console.error("Failed to fetch comments:", err));
   }, [articleId]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Sending comment:", newContent);
-    const res = await fetch(`/api/comments/${articleId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ content: newContent }),
-    });
-    if (res.ok) {
-      const newComment = await res.json();
+    try {
+      const res = await api.post(`/comments/${articleId}`, { content: newContent });
+      const newComment = res.data;
       setComments([
         {
           id: newComment.id,
@@ -36,22 +31,16 @@ export default function Comments({ articleId }) {
         ...comments,
       ]);
       setNewContent("");
-    } else {
+    } catch (err) {
       alert("Не вдалося додати коментар.");
     }
   };
 
   const handleDelete = async (id) => {
-    const res = await fetch(`/api/comments/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (res.ok) {
+    try {
+      await api.delete(`/comments/${id}`);
       setComments(comments.filter((c) => c.id !== id));
-    } else {
+    } catch (err) {
       alert("Помилка видалення.");
     }
   };

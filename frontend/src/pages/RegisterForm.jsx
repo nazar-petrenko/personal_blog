@@ -1,26 +1,24 @@
 import { useState } from "react";
-import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useApi } from "../hooks/useApi";
 
 const RegisterForm = ({ close }) => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const api = useApi(); 
 
-const handleRegister = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await axios.post("/api/auth/register", { email, password }, { withCredentials: true });
-
-    const token = res.data.accessToken;
-    const user = res.data.user;
-
-    login(user, token);
-    close();
-  } catch (err) {
-    console.error("Register error:", err.response?.data || err.message);
-  }
-};
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await api.post("/auth/register", { email, password });
+      const { accessToken, user } = res.data;
+      login(user, accessToken);
+      close();
+    } catch (err) {
+      console.error("Register error:", err.response?.data || err.message);
+    }
+  };
 
 
   return (

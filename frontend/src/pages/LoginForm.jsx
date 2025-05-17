@@ -1,21 +1,19 @@
 import { useState } from "react";
-import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { useApi } from "../hooks/useApi";
 
 const LoginForm = ({ close }) => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const api = useApi(); 
 
- const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/login", { email, password }, { withCredentials: true });
-    
-      const token = res.data.accessToken;
-      const user = res.data.user;
-    
-      login(user, token);
+      const res = await api.post("/auth/login", { email, password });
+      const { accessToken, user } = res.data;
+      login(user, accessToken);
       close();
     } catch (err) {
       console.error("Login error:", err.response?.data || err.message);
