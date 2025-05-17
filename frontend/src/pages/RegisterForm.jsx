@@ -6,12 +6,29 @@ const RegisterForm = ({ close }) => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [nickname, setNickname] = useState("");
   const api = useApi(); 
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("/auth/register", { email, password });
+      if (!email.includes("@")) {
+        alert("Некоректна пошта");
+        return;
+      }
+      if (password.length < 8 || !/[A-Z]/.test(password)) {
+        alert("Пароль повинен містити більше 8 символів і мінімум одну велику літеру");
+        return;
+      }
+      if (nickname.length < 3) {
+        alert("Нікнейм має містити мінімум 3 символи");
+        return;
+      }
+      const res = await api.post("/auth/register", {
+        email,
+        password,
+        nickname,
+      });
       const { accessToken, user } = res.data;
       login(user, accessToken);
       close();
@@ -32,6 +49,14 @@ const RegisterForm = ({ close }) => {
           required
           onChange={(e) => setEmail(e.target.value)}
         />
+        <input
+          type="text"
+          placeholder="Nickname"
+          value={nickname}
+          required
+          onChange={(e) => setNickname(e.target.value)}
+        />
+
         <input
           type="password"
           placeholder="Password"

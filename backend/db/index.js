@@ -20,6 +20,7 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT UNIQUE NOT NULL,
       password TEXT NOT NULL,
+      nickname TEXT UNIQUE NOT NULL,
       role TEXT DEFAULT 'user',
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
@@ -68,6 +69,7 @@ db.serialize(() => {
   // --- Додавання адміністратора, якщо його ще немає ---
   const adminEmail = 'admin@example.com';
   const adminPassword = 'admin123'; // ❗ змінити перед продакшеном
+  const adminNickname = 'admin';
 
   db.get(`SELECT * FROM users WHERE email = ?`, [adminEmail], async (err, row) => {
     if (err) {
@@ -75,8 +77,8 @@ db.serialize(() => {
     } else if (!row) {
       const hashedPassword = await bcrypt.hash(adminPassword, 10);
       db.run(
-        `INSERT INTO users (email, password, role) VALUES (?, ?, ?)`,
-        [adminEmail, hashedPassword, 'admin'],
+        `INSERT INTO users (email, password, nickname, role) VALUES (?, ?, ?, ?)`,
+        [adminEmail, hashedPassword, adminNickname, 'admin'],
         (err) => {
           if (err) {
             console.error('❌ Failed to create admin user:', err);
@@ -88,7 +90,8 @@ db.serialize(() => {
     } else {
       console.log(`ℹ️ Admin user already exists: ${adminEmail}`);
     }
-  });
+  })
+  
 });
 
 module.exports = db;

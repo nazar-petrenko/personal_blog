@@ -4,23 +4,44 @@ const generateTokens = require('../utils/generateTokens');
 const jwt = require('jsonwebtoken');
 
 exports.register = (req, res) => {
-  const { email, password } = req.body;
-  const hash = bcrypt.hashSync(password, 10);
+  const { email, password, nickname } = req.body;
 
-  db.run(`INSERT INTO users (email, password) VALUES (?, ?)`, [email, hash], function (err) {
+  // Basic validation
+  const errors = [];
+  if (!email || !email.includes('@')) errors.push('Некоректна пошта');
+  if (!password || password.length < 8 || !/[A-Z]/.test(password)) {
+    errors.push('Пароль повинен містити мінімум 8 символів і хоча б одну велику літеру');
+  }
+  if (!nickname || nickname.length < 3) errors.push('Нікнейм повинен містити мінімум 3 символи');
+
+  if (errors.length > 0) return res.status(400).json({ message: errors.join(', ') });
+
+  // Check if email or nickname already exists
+  db.get(`SELECT * FROM users WHERE email = ? OR nickname = ?`, [email, nickname], (err, existing) => {
     if (err) return res.status(500).json({ message: 'DB error' });
+    if (existing) return res.status(409).json({ message: 'Така пошта або нікнейм вже існує' });
 
-    const user = { id: this.lastID, role: 'user', email };
-    const { accessToken, refreshToken } = generateTokens(user);
+    const hash = bcrypt.hashSync(password, 10);
 
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: true,         // використовуй HTTPS у проді
-      sameSite: 'Strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 днів
-    });
+    db.run(
+      `INSERT INTO users (email, password, nickname) VALUES (?, ?, ?)`,
+      [email, hash, nickname],
+      function (err) {
+        if (err) return res.status(500).json({ message: 'DB error' });
 
-    res.json({ accessToken, user });
+        const user = { id: this.lastID, role: 'user', email, nickname };
+        const { accessToken, refreshToken } = generateTokens(user);
+
+        res.cookie('refreshToken', refreshToken, {
+          httpOnly: true,
+          secure: true,
+          sameSite: 'Strict',
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
+
+        res.json({ accessToken, user });
+      }
+    );
   });
 };
 
@@ -32,7 +53,12 @@ exports.login = (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const safeUser = { id: user.id, role: user.role, email: user.email };
+    const safeUser = {
+      id: user.id,
+      role: user.role,
+      email: user.email,
+      nickname: user.nickname
+    };
     const { accessToken, refreshToken } = generateTokens(safeUser);
 
     res.cookie('refreshToken', refreshToken, {

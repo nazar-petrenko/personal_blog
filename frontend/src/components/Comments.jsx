@@ -18,23 +18,16 @@ export default function Comments({ articleId }) {
   }, [articleId]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await api.post(`/comments/${articleId}`, { content: newContent });
-      const newComment = res.data;
-      setComments([
-        {
-          id: newComment.id,
-          content: newContent,
-          authorEmail: currentUser.email,
-        },
-        ...comments,
-      ]);
-      setNewContent("");
-    } catch (err) {
-      alert("Не вдалося додати коментар.");
-    }
-  };
+  e.preventDefault();
+  try {
+    const res = await api.post(`/comments/${articleId}`, { content: newContent });
+    setComments([res.data, ...comments]);
+    setNewContent("");
+  } catch (err) {
+    alert("Не вдалося додати коментар.");
+  }
+};
+
 
   const handleDelete = async (id) => {
     try {
@@ -65,11 +58,10 @@ export default function Comments({ articleId }) {
         comments.map((comment) => (
           <li key={comment.id}>
             <div>
-              <strong>{comment.authorEmail}</strong>: {comment.content}
+              <strong>{comment.nickname || "Анонім"}</strong> : {comment.content}
             </div>
             {currentUser &&
-              (currentUser.email === comment.authorEmail ||
-                currentUser.role === "admin") && (
+              ((currentUser.nickname === comment.nickname || currentUser.role === "admin")) && (
                 <button onClick={() => handleDelete(comment.id)}>Видалити</button>
               )}
           </li>

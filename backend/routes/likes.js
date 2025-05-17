@@ -12,4 +12,6 @@ router.post('/:articleId', authMiddleware, likeController.likeArticle);
 // Прибрати лайк
 router.delete('/:articleId', authMiddleware, likeController.unlikeArticle);
 
+router.get('/:articleId/isLiked', authMiddleware, likeController.isLiked);
+
 module.exports = router;

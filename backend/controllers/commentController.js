@@ -3,17 +3,21 @@ const db = require('../db');
 exports.getCommentsByArticleId = (req, res) => {
   const { articleId } = req.params;
 
-  db.all(
-    `SELECT comments.*, users.email AS authorEmail FROM comments
-     JOIN users ON comments.user_id = users.id
-     WHERE article_id = ?
-     ORDER BY created_at DESC`,
-    [articleId],
-    (err, rows) => {
-      if (err) return res.status(500).json({ message: 'DB error' });
-      res.json(rows);
+db.all(
+  `SELECT comments.id, comments.content, comments.created_at, users.nickname 
+   FROM comments 
+   LEFT JOIN users ON comments.user_id = users.id 
+   WHERE comments.article_id = ?
+   ORDER BY comments.created_at DESC`,
+  [articleId],
+  (err, rows) => {
+    if (err) {
+      console.error("🔥 DB error in getCommentsByArticleId:", err); // додано
+      return res.status(500).json({ message: 'DB error' });
     }
-  );
+    res.json(rows);
+  }
+);
 };
 
 exports.createComment = (req, res) => {
@@ -25,15 +29,26 @@ exports.createComment = (req, res) => {
     return res.status(400).json({ message: 'Content required' });
   }
 
-  db.run(
-    `INSERT INTO comments (content, article_id, user_id)
-     VALUES (?, ?, ?)`,
-    [content, articleId, userId],
-    function (err) {
-      if (err) return res.status(500).json({ message: 'DB error' });
-      res.status(201).json({ id: this.lastID });
-    }
-  );
+ db.run(
+  `INSERT INTO comments (content, article_id, user_id)
+   VALUES (?, ?, ?)`,
+  [content, articleId, userId],
+  function (err) {
+    if (err) return res.status(500).json({ message: 'DB error' });
+
+    db.get(
+      `SELECT comments.id, comments.content, comments.created_at, users.nickname 
+       FROM comments 
+       JOIN users ON comments.user_id = users.id 
+       WHERE comments.id = ?`,
+      [this.lastID],
+      (err, newComment) => {
+        if (err) return res.status(500).json({ message: 'DB error' });
+        res.status(201).json(newComment);
+      }
+    );
+  }
+);
 };
 
 exports.deleteComment = (req, res) => {

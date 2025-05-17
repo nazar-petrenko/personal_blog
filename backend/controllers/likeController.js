@@ -50,3 +50,17 @@ exports.unlikeArticle = (req, res) => {
     }
   );
 };
+
+exports.isLiked = (req, res) => {
+  const { articleId } = req.params;
+  const userId = req.user.id;
+
+  db.get(
+    `SELECT 1 FROM likes WHERE user_id = ? AND article_id = ?`,
+    [userId, articleId],
+    (err, row) => {
+      if (err) return res.status(500).json({ message: "DB error" });
+      res.json({ liked: !!row });
+    }
+  );
+};
