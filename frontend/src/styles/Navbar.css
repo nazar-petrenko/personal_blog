@@ -1,0 +1,137 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #fce4ec, #e0f7fa);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2a3d66;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #2a3d66;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0077b6;
+}
+
+.nav-link.active {
+  font-weight: 600;
+  color: #0077b6;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-button {
+  padding: 0.4rem 1rem;
+  background-color: #2a3d66;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.auth-button:hover {
+  background-color: #0077b6;
+}
+/* ============================================================================================================================ */
+
+.auth-popup {
+  position: absolute;
+  top: 70px;
+  right: 16px;
+  background: #fff7f7;
+  border: 1px solid #ffdede;
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 250px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.auth-popup h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #3b3b3b;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auth-form input {
+  padding: 0.5rem;
+  border: 1px solid #ffdede;
+  border-radius: 6px;
+  background-color: #fffafa;
+  font-size: 0.9rem;
+}
+
+.auth-form button {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #ffb6b9;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-form button:hover {
+  background-color: #f77c7c;
+}
+
+.cancel-btn {
+  background: none;
+  color: #888;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  padding: 0.2rem;
+  margin-top: 0.2rem;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  color: #555;
+}
+
+.auth-btn {
+  background-color: #ffe0ec;
+  border: 1px solid #ffc1cc;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-btn:hover {
+  background-color: #ffc1cc;
+}

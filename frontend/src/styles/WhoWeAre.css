@@ -1,0 +1,30 @@
+
+/* styles/WhoWeAre.css */
+.page.who-we-are {
+  background: linear-gradient(to right, #ede7f6, #fce4ec);
+  min-height: 100vh;
+  padding: 3rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.page.who-we-are .content {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.page.who-we-are h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4e3b6d;
+}
+
+.page.who-we-are p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1rem;
+}
