@@ -7,13 +7,15 @@ const LoginForm = ({ close }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
+ const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/login", { email, password });
-      const token = res.data.token;
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      login(payload, token);
+      const res = await axios.post("/api/auth/login", { email, password }, { withCredentials: true });
+    
+      const token = res.data.accessToken;
+      const user = res.data.user;
+    
+      login(user, token);
       close();
     } catch (err) {
       console.error("Login error:", err.response?.data || err.message);

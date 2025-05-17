@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
-require('./db'); // база
+require('./db'); 
 
+
+app.use(cookieParser());
 
 app.use(cors({
   origin: '*', // або '*' якщо хочеш дозволити всім (не рекомендується для продакшену)

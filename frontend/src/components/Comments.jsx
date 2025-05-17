@@ -14,9 +14,9 @@ export default function Comments({ articleId }) {
       .then(setComments)
       .catch((err) => console.error("Failed to fetch comments:", err));
   }, [articleId]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Sending comment:", newContent);
     const res = await fetch(`/api/comments/${articleId}`, {
       method: "POST",
       headers: {
@@ -25,7 +25,6 @@ export default function Comments({ articleId }) {
       },
       body: JSON.stringify({ content: newContent }),
     });
-
     if (res.ok) {
       const newComment = await res.json();
       setComments([

@@ -7,18 +7,21 @@ const RegisterForm = ({ close }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("/api/auth/register", { email, password });
-      const token = res.data.token;
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      login(payload, token);
-      close(); // Закрити форму
-    } catch (err) {
-      console.error("Register error:", err.response?.data || err.message);
-    }
-  };
+const handleRegister = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post("/api/auth/register", { email, password }, { withCredentials: true });
+
+    const token = res.data.accessToken;
+    const user = res.data.user;
+
+    login(user, token);
+    close();
+  } catch (err) {
+    console.error("Register error:", err.response?.data || err.message);
+  }
+};
+
 
   return (
     <div className="auth-popup">
