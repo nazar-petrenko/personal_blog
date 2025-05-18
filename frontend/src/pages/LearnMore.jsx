@@ -1,22 +1,21 @@
 import "../styles/LearnMore.css";
+import { useTranslation, Trans } from "react-i18next";
 
 export default function LearnMore() {
+  const { t } = useTranslation();
+
   return (
     <main className="learn-more-page">
       <div className="learn-more-content">
-        <h1 className="learn-more-heading">Learn More</h1>
+        <h1 className="learn-more-heading">{t("learnMoreTitle")}</h1>
         <p>
-          Over <strong>820 million people</strong> worldwide suffer from hunger.
-          Malnutrition causes <strong>45% of child deaths</strong> globally.
-          Poverty affects over <strong>700 million people</strong>.
+          <Trans i18nKey="learnMore1" components={[<strong />, <strong />, <strong />]} />
         </p>
         <p>
-          Our platform shares <strong>statistics, causes</strong>, and the global efforts
-          to address these issues.
+          <Trans i18nKey="learnMore2" components={[<strong />]} />
         </p>
         <p>
-          <strong>Conflicts, economic instability, climate change,</strong> and rising
-          food prices are key drivers.
+          <Trans i18nKey="learnMore3" components={[<strong />]} />
         </p>
       </div>
     </main>

@@ -65,7 +65,7 @@ export default function AddArticle() {
       <select value={language} onChange={(e) => setLanguage(e.target.value)}>
         <option value="en">English</option>
         <option value="uk">Українська</option>
-        <option value="pl">Polski</option>
+        <option value="nl">Nederlands</option>
       </select>
 
       <label>Preview Image:</label>

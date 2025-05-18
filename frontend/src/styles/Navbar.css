@@ -178,3 +178,23 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.lang-switcher button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.lang-switcher button:hover {
+  background-color: #eee;
+}

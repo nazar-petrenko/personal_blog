@@ -2,24 +2,23 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    let dir = './uploads/others';
+const storage = multer.memoryStorage(); 
 
-    if (file.fieldname === 'preview') {
-      dir = './uploads/preview';
-    } else if (file.fieldname === 'gallery') {
-      dir = './uploads/gallery';
-    }
+const fileFilter = (req, file, cb) => {
+  // Дозволені лише зображення
+  if (file.mimetype.startsWith('image/')) {
+    cb(null, true);
+  } else {
+    cb(new Error('Тільки зображення!'), false);
+  }
+};
 
-    fs.mkdirSync(dir, { recursive: true });
-    cb(null, dir);
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB максимум
   },
-  filename: function (req, file, cb) {
-    cb(null, `${Date.now()}_${file.originalname}`);
-  },
+  fileFilter
 });
-
-const upload = multer({ storage });
 
 module.exports = upload;

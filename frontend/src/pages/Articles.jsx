@@ -3,13 +3,15 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Articles.css";
 import { useAuth } from "../context/AuthContext";
-import { useApi } from "../hooks/useApi"
+import { useApi } from "../hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [language, setLanguage] = useState("all");
-  const { user: currentUser } = useAuth(); 
-  const api = useApi(); 
+  const { user: currentUser } = useAuth();
+  const api = useApi();
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchArticles();
@@ -28,36 +30,33 @@ export default function Articles() {
     setLanguage(e.target.value);
   };
 
-
-   const handleDelete = async (id) => {
-    const confirmed = window.confirm("Ви впевнені, що хочете видалити цю статтю?");
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(t("confirmDelete"));
     if (!confirmed) return;
 
     try {
       await api.delete(`/articles/${id}`);
       setArticles((prev) => prev.filter((a) => a.id !== id));
     } catch (err) {
-      alert("Помилка при видаленні статті.");
+      alert(t("deleteError"));
     }
   };
 
-
   return (
-     <div className="articles-page">
-      <h1>Articles</h1>
+    <div className="articles-page">
+      <h1>{t("articlesTitle")}</h1>
 
       <div className="language-filter">
-        <label>Фільтр за мовою: </label>
+        <label>{t("filterByLanguage")}</label>
         <select value={language} onChange={handleLanguageChange}>
-          <option value="all">Усі</option>
-          <option value="uk">Українська</option>
-          <option value="en">English</option>
-          <option value="nl">Nederlands</option>
+          <option value="all">{t("allLanguages")}</option>
+          <option value="en">{t("english")}</option>
+          <option value="nl">{t("dutch")}</option>
         </select>
       </div>
 
       {articles.length === 0 ? (
-        <p>No articles yet.</p>
+        <p>{t("noArticles")}</p>
       ) : (
         <div className="articles-list">
           {articles.map((article) => (
@@ -71,17 +70,17 @@ export default function Articles() {
               )}
               <div className="article-content">
                 <h3>{article.title}</h3>
-                <p>{article.content.slice(0, 160)}...</p>
+                <p>{article.content.slice(0, 80)}...</p>
                 <div className="article-footer">
                   <div className="likes-count">❤️ {article.likeCount || 0}</div>
-                            
+
                   <div className="footer-buttons">
                     <Link to={`/articles/${article.id}`} className="read-more-btn">
-                      Більше
+                      {t("readMore")}
                     </Link>
                     {currentUser?.role === "admin" && (
                       <button onClick={() => handleDelete(article.id)} className="delete-btn">
-                        Видалити
+                        {t("delete")}
                       </button>
                     )}
                   </div>
