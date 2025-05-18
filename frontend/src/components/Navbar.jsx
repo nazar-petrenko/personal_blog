@@ -28,6 +28,10 @@ export default function Navbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleNavLinkClick = () => {
+  setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -38,13 +42,13 @@ export default function Navbar() {
         <GiHamburgerMenu className="burger-icon" onClick={toggleMobileMenu} />
 
         <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
-          <NavLink to="/" className="nav-link">Home</NavLink>
-          <NavLink to="/who-we-are" className="nav-link">Who we are</NavLink>
-          <NavLink to="/articles" className="nav-link">Articles</NavLink>
-          <NavLink to="/about-project" className="nav-link">About Project</NavLink>
-          <NavLink to="/learn-more" className="nav-link">Learn More</NavLink>
+          <NavLink to="/" className="nav-link" onClick={handleNavLinkClick}>Home</NavLink>
+          <NavLink to="/who-we-are" className="nav-link" onClick={handleNavLinkClick}>Who we are</NavLink>
+          <NavLink to="/articles" className="nav-link" onClick={handleNavLinkClick}>Articles</NavLink>
+          <NavLink to="/about-project" className="nav-link" onClick={handleNavLinkClick}>About Project</NavLink>
+          <NavLink to="/learn-more" className="nav-link" onClick={handleNavLinkClick}>Learn More</NavLink>
           {user?.role === "admin" && (
-            <NavLink to="/admin/add-article" className="nav-link">Add Article</NavLink>
+            <NavLink to="/admin/add-article" className="nav-link" onClick={handleNavLinkClick}>Add Article</NavLink>
           )}
         </div>
       </div>

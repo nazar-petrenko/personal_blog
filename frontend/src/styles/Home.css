@@ -1,46 +1,51 @@
-/* styles/Home.css */
-.page.home {
-  background: linear-gradient(to right, #fce4ec, #e0f7fa);
-  min-height: 100vh;
+.home-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
+  min-height: 80vh;
 }
 
-.page.home .content {
-  background: white;
-  border-radius: 16px;
-  padding: 3rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+.home-content {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   text-align: center;
-  max-width: 600px;
+  width: 100%;
 }
 
-.page.home h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #2a3d66;
+.home-heading {
+  font-size: 2.4rem;
+  margin-bottom: 1.2rem;
+  color: #1d4ed8;
+  font-weight: 600;
 }
 
-.page.home p {
-  font-size: 1.125rem;
-  color: #555;
+.home-description {
+  font-size: 1.15rem;
+  color: #374151;
   margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-.page.home .btn {
-  background: #64b5f6;
+.home-btn {
+  display: inline-block;
+  background-color: #1d4ed8;
   color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
 }
 
-.page.home .btn:hover {
-  background: #42a5f5;
+.home-btn:hover {
+  background-color: #3b82f6;
 }

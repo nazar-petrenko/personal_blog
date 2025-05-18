@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import "../styles/AddArticle.css";
 
 export default function AddArticle() {
   const { token, user } = useAuth();
@@ -21,9 +22,7 @@ export default function AddArticle() {
 
     const res = await fetch("/api/admin/articles", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
 
@@ -39,48 +38,52 @@ export default function AddArticle() {
     }
   };
 
-  if (user?.role !== "admin") return <p>Only admin can add articles.</p>;
+  if (user?.role !== "admin") return <p className="no-access">Only admin can add articles.</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Create Article</h2>
+    <form className="article-form" onSubmit={handleSubmit}>
+      <h2>Create New Article</h2>
+
+      <label>Title:</label>
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
+        placeholder="Article title"
+        required
       />
+
+      <label>Content (Markdown):</label>
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Markdown content"
-        rows={10}
+        placeholder="Write your markdown content here..."
+        rows={8}
+        required
       />
+
+      <label>Language:</label>
       <select value={language} onChange={(e) => setLanguage(e.target.value)}>
         <option value="en">English</option>
         <option value="uk">Українська</option>
         <option value="pl">Polski</option>
       </select>
 
-      <div>
-        <label>Preview Image:</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setPreview(e.target.files[0])}
-        />
-      </div>
+      <label>Preview Image:</label>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setPreview(e.target.files[0])}
+      />
 
-      <div>
-        <label>Gallery Images:</label>
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={(e) => setGallery([...e.target.files])}
-        />
-      </div>
+      <label>Gallery Images:</label>
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={(e) => setGallery([...e.target.files])}
+      />
 
-      <button type="submit">Submit</button>
+      <button type="submit">Submit Article</button>
     </form>
   );
 }

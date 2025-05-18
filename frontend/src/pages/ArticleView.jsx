@@ -1,9 +1,10 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import Comments from "../components/Comments";
 import LikeButton from "../components/LikeButton";
 import { useAuth } from "../context/AuthContext";
+import "../styles/ArticleView.css";
 
 export default function ArticleView() {
   const { id } = useParams();
@@ -19,7 +20,9 @@ export default function ArticleView() {
   if (!article) return <p>Loading...</p>;
 
   return (
-    <div className="article-view">
+    <div className="article-view-page">
+      <h1 className="article-title">{article.title}</h1>
+
       {article.preview_image && (
         <img
           src={article.preview_image}
@@ -28,7 +31,9 @@ export default function ArticleView() {
         />
       )}
 
-      <ReactMarkdown>{article.content}</ReactMarkdown>
+      <div className="article-markdown">
+        <ReactMarkdown>{article.content}</ReactMarkdown>
+      </div>
 
       {article.images?.length > 0 && (
         <div className="gallery">
@@ -45,11 +50,16 @@ export default function ArticleView() {
           </div>
         </div>
       )}
-      {/* Лайки */}
-      <LikeButton articleId={id} />
-      {/* Коментарі */}
-      <Comments articleId={id} currentUser={currentUser} />
 
+      <div className="article-bottom">
+        <div className="like-area">
+          <LikeButton articleId={id} />
+        </div>
+      </div>
+
+      <div className="comments-area">
+        <Comments articleId={id} currentUser={currentUser} />
+      </div>
     </div>
   );
 }

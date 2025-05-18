@@ -1,20 +1,19 @@
-// src/pages/AboutProject.jsx
 import "../styles/AboutProject.css";
 
 export default function AboutProject() {
   return (
-    <div className="page about-project">
-      <div className="content">
-        <h1>About the Project</h1>
+    <main className="about-project-page">
+      <div className="about-project-content">
+        <h1 className="about-project-heading">About the Project</h1>
         <p>
-          Hunger and poverty are two of the most pressing global challenges.
-          Our project aims to raise awareness and promote sustainable solutions.
+          <strong>Hunger</strong> and <strong>poverty</strong> are two of the most pressing global challenges.
+          Our project aims to <strong>raise awareness</strong> and promote <strong>sustainable solutions</strong>.
         </p>
         <p>
-          We provide insights and resources to educate people about these issues
-          and encourage meaningful action.
+          We provide <strong>insights</strong> and <strong>resources</strong> to educate people about these issues
+          and encourage meaningful <strong>action</strong>.
         </p>
       </div>
-    </div>
+    </main>
   );
 }

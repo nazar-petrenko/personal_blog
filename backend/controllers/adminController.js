@@ -44,9 +44,36 @@ exports.updateArticle = (req, res) => {
 
 exports.deleteArticle = (req, res) => {
   const { id } = req.params;
+  // 1. Отримати всі медіа
+  db.all(`SELECT path FROM article_images WHERE article_id = ?`, [id], (err, images) => {
+    if (err) return res.status(500).json({ message: 'DB error (media fetch)' });
 
-  db.run(`DELETE FROM articles WHERE id = ?`, [id], function (err) {
-    if (err) return res.status(500).json({ message: 'DB error' });
-    res.json({ message: 'Article deleted' });
+    // 2. Видалити з диску
+    images.forEach(image => {
+      const filePath = path.join(__dirname, '..', image.path);
+      fs.unlink(filePath, (err) => {
+        if (err) console.warn("Файл не видалено:", filePath);
+      });
+    });
+
+    // 3. Видалити з БД пов’язані записи
+    db.serialize(() => {
+          db.get(`SELECT preview_image FROM articles WHERE id = ?`, [id], (err, row) => {
+      if (row?.preview_image && row.preview_image.startsWith('/uploads/')) {
+        const previewPath = path.join(__dirname, '..', row.preview_image);
+        fs.unlink(previewPath, (err) => {
+          if (err) console.warn("❌ Не вдалося видалити preview image:", previewPath, err.message);
+          else console.log("✅ Preview image видалено:", previewPath);
+        });
+      }
+    });
+      db.run(`DELETE FROM article_images WHERE article_id = ?`, [id]);
+      db.run(`DELETE FROM comments WHERE article_id = ?`, [id]);
+      db.run(`DELETE FROM likes WHERE article_id = ?`, [id]);
+      db.run(`DELETE FROM articles WHERE id = ?`, [id], function (err) {
+        if (err) return res.status(500).json({ message: 'DB error (delete)' });
+        res.json({ message: 'Article and related data deleted' });
+      });
+    });
   });
 };

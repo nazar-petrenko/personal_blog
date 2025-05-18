@@ -1,29 +1,40 @@
-/* styles/LearnMore.css */
-.page.learn-more {
-  background: linear-gradient(to right, #f1f8e9, #e8f5e9);
-  min-height: 100vh;
-  padding: 3rem;
+.learn-more-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
   font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.page.learn-more .content {
-  max-width: 700px;
-  margin: auto;
-  background: white;
-  border-radius: 16px;
-  padding: 2.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.learn-more-content {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  text-align: left;
 }
 
-.page.learn-more h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #33691e;
+.learn-more-heading {
+  font-size: 2.2rem;
+  color: #1d4ed8;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.page.learn-more p {
+.learn-more-content p {
   font-size: 1.1rem;
-  color: #333;
-  line-height: 1.8;
-  margin-bottom: 1rem;
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+.learn-more-content strong {
+  color: #1d4ed8;
+  font-weight: 600;
 }

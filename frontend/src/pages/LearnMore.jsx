@@ -1,25 +1,24 @@
-// src/pages/LearnMore.jsx
 import "../styles/LearnMore.css";
 
 export default function LearnMore() {
   return (
-    <div className="page learn-more">
-      <div className="content">
-        <h1>Learn More</h1>
+    <main className="learn-more-page">
+      <div className="learn-more-content">
+        <h1 className="learn-more-heading">Learn More</h1>
         <p>
-          Over 820 million people worldwide suffer from hunger. Malnutrition
-          causes 45% of child deaths globally. Poverty affects over 700 million
-          people.
+          Over <strong>820 million people</strong> worldwide suffer from hunger.
+          Malnutrition causes <strong>45% of child deaths</strong> globally.
+          Poverty affects over <strong>700 million people</strong>.
         </p>
         <p>
-          Our platform shares statistics, causes, and the global efforts to
-          address these issues.
+          Our platform shares <strong>statistics, causes</strong>, and the global efforts
+          to address these issues.
         </p>
         <p>
-          Conflicts, economic instability, climate change, and rising food
-          prices are key drivers.
+          <strong>Conflicts, economic instability, climate change,</strong> and rising
+          food prices are key drivers.
         </p>
       </div>
-    </div>
+    </main>
   );
 }

@@ -79,6 +79,14 @@
 }
 
 @media (max-width: 768px) {
+   .social-icons {
+    display: none;
+  }
+
+   .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .burger-icon {
     display: block;
   }
@@ -92,6 +100,7 @@
     background-color: #1d4ed8;
     width: 100%;
     padding: 1rem 2rem;
+    z-index: 900;
   }
 
   .nav-links.open {
@@ -99,10 +108,19 @@
   }
 
   .navbar-right {
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 1rem;
     gap: 0.5rem;
-    margin-top: 1rem;
+    background: transparent;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .auth-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
   }
 }
 
