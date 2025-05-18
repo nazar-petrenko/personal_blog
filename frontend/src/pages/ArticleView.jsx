@@ -20,13 +20,36 @@ export default function ArticleView() {
 
   return (
     <div className="article-view">
-      <h1>{article.title}</h1>
+      {article.preview_image && (
+        <img
+          src={article.preview_image}
+          alt="preview"
+          className="article-preview"
+        />
+      )}
+
       <ReactMarkdown>{article.content}</ReactMarkdown>
-      
+
+      {article.images?.length > 0 && (
+        <div className="gallery">
+          <h4>Галерея:</h4>
+          <div className="gallery-grid">
+            {article.images.map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={`gallery-${idx}`}
+                className="gallery-image"
+              />
+            ))}
+          </div>
+        </div>
+      )}
       {/* Лайки */}
       <LikeButton articleId={id} />
       {/* Коментарі */}
       <Comments articleId={id} currentUser={currentUser} />
+
     </div>
   );
 }

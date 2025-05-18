@@ -15,7 +15,7 @@ const db = new sqlite3.Database(path.join(__dirname, '../blog.db'), (err) => {
 
 db.serialize(() => {
   // Users
-  db.run(`
+   db.run(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT UNIQUE NOT NULL,
@@ -26,16 +26,28 @@ db.serialize(() => {
     )
   `);
 
-  // Articles
+  // Articles (з preview_image)
   db.run(`
     CREATE TABLE IF NOT EXISTS articles (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
       content TEXT NOT NULL,
       language TEXT DEFAULT 'en',
+      preview_image TEXT,
       author_id INTEGER,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (author_id) REFERENCES users(id)
+    )
+  `);
+
+  // Article Images (галерея до кожної статті)
+  db.run(`
+    CREATE TABLE IF NOT EXISTS article_images (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      article_id INTEGER NOT NULL,
+      path TEXT NOT NULL, -- шлях до зображення
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (article_id) REFERENCES articles(id)
     )
   `);
 
@@ -66,6 +78,7 @@ db.serialize(() => {
   `);
 
 
+
   // --- Додавання адміністратора, якщо його ще немає ---
   const adminEmail = 'admin@example.com';
   const adminPassword = 'admin123'; // ❗ змінити перед продакшеном
@@ -91,7 +104,7 @@ db.serialize(() => {
       console.log(`ℹ️ Admin user already exists: ${adminEmail}`);
     }
   })
-  
+
 });
 
 module.exports = db;

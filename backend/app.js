@@ -4,7 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 require('./db'); 
-
+const path = require('path');
 
 app.use(cookieParser());
 
@@ -23,6 +23,7 @@ app.use('/api/articles', require('./routes/articles'));
 app.use('/api/likes', require('./routes/likes'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/comments', require('./routes/comments'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 404 fallback
 app.use((req, res) => res.status(404).json({ message: 'Not found' }));
