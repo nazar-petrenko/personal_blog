@@ -1,13 +1,20 @@
+.home-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fca5a5 0%, #fef08a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
 .home-page {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+  width: 100%;
   font-family: 'Segoe UI', sans-serif;
   color: #1e293b;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
 }
 
 .home-content {

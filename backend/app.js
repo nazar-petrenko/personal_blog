@@ -5,8 +5,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 require('./db'); 
 const path = require('path');
-
+const whoWeAreRoutes = require('./routes/whoweare');
 app.use(cookieParser());
+
 
 app.use(cors({
   origin: '*', // або '*' якщо хочеш дозволити всім (не рекомендується для продакшену)
@@ -24,6 +25,7 @@ app.use('/api/likes', require('./routes/likes'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/comments', require('./routes/comments'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/who-we-are', whoWeAreRoutes);
 
 // 404 fallback
 app.use((req, res) => res.status(404).json({ message: 'Not found' }));

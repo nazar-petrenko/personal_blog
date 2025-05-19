@@ -42,7 +42,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <div className="nav-brand">
-          <img src="../assets/logo_blog.svg" alt="Logo" />
+          <img src="src/assets/logo.png" alt="Logo" />
         </div>
 
         <GiHamburgerMenu className="burger-icon" onClick={toggleMobileMenu} />
@@ -64,14 +64,6 @@ export default function Navbar() {
           <button onClick={() => changeLanguage("en")}>EN</button>
           <button onClick={() => changeLanguage("nl")}>NL</button>
         </div>
-
-        <div className="social-icons">
-          <FaFacebookF />
-          <FaTwitter />
-          <FaYoutube />
-          <FaRss />
-        </div>
-
         {!user ? (
           <div className="auth-buttons">
             <button className="auth-btn" onClick={toggleLogin}>{t("login")}</button>

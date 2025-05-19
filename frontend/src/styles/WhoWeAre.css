@@ -1,14 +1,24 @@
+
+.who-we-are-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fca5a5 0%, #fef08a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 40px; 
+  box-sizing: border-box;
+}
+
 .who-we-are-page {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+  width: 100%;
   font-family: 'Segoe UI', sans-serif;
   color: #1e293b;
-  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 .who-we-are-content {
   background-color: #ffffff;
@@ -37,4 +47,79 @@
 .who-we-are-content strong {
   color: #7c3aed;
   font-weight: 600;
+}
+
+
+.who-we-are-gallery-slider {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-image {
+  max-width: 100%;
+  max-height: 500px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+
+.slider-button {
+  position: absolute;
+  background-color: rgba(45, 29, 29, 0.7);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease;
+}
+
+
+.who-we-are-subheading {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1e293b;
+}
+
+.who-we-are-gallery {
+  margin-top: 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whoweare-image {
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-nav {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7c3aed;
+  transition: transform 0.2s;
+}
+
+.gallery-nav.left {
+  left: 150px;
+}
+
+.gallery-nav.right {
+  right: 150px;
+}
+
+.gallery-nav:hover {
+  transform: translateY(-50%) scale(1.2);
 }

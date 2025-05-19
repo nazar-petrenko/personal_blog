@@ -20,16 +20,38 @@
   "delete": "Delete",
   "confirmDelete": "Are you sure you want to delete this article?",
   "deleteError": "Failed to delete the article.",
+
   "learnMoreTitle": "Learn More",
-  "learnMore1": "Over <1>820 million people</1> worldwide suffer from hunger. Malnutrition causes <3>45% of child deaths</3> globally. Poverty affects over <5>700 million people</5>.",
-  "learnMore2": "Our platform shares <1>statistics, causes</1>, and the global efforts to address these issues.",
-  "learnMore3": "<1>Conflicts, economic instability, climate change</1>, and rising food prices are key drivers.",
+  "purposeTitle": "The Purpose of This Website",
+  "purposeParagraph1": "The goal of our website is simple: to educate and inspire action. We provide valuable information on the root causes of hunger and poverty, showcase successful initiatives, and offer ways for individuals, organizations, and communities to get involved. Whether you are a student, an activist, or simply someone who cares about social justice, we hope our platform empowers you to make a difference.",
+  "purposeParagraph2": "Together, we can build a future where no one goes hungry and poverty becomes a thing of the past. Join us in our mission to create a fairer, more sustainable world!",
 
   "whoWeAreTitle": "Who We Are",
-  "whoWeAre1": "We are a group of <1>VIVES students</1> dedicated to making a positive impact on global issues. Our goal is to promote <3>sustainability</3> and <5>social responsibility</5>.",
-  "whoWeAre2": "Our team consists of four passionate individuals who believe that <1>knowledge and action</1> can drive meaningful change.",
+  "whoWeAreIntro1": "We are a group of VIVES students dedicated to making a positive impact on global issues. As part of our commitment to  sustainability and social responsibility, we have created this website to raise awareness about two of the United Nations' Sustainable   Development Goals (SDGs): <1>No Hunger</1> and <1>No Poverty</1>.",
+  "whoWeAreIntro2": "Our team consists of four passionate individuals who believe that <1>knowledge and action</1> can drive meaningful   change.",
+  "whyWeDoItTitle": "Why We Do It",
+  "whyWeDoItText": "Hunger and poverty remain two of the most pressing global challenges, affecting millions of people worldwide. We believe  that by <1>educating others</1>, <3>spreading awareness</3>, and <5>promoting sustainable solutions</5>, we can contribute to a world  where basic human needs are met for everyone.",
 
-  "aboutProjectTitle": "About the Project",
-  "aboutProject1": "<1>Hunger</1> and <3>poverty</3> are two of the most pressing global challenges. Our project aims to <5>raise awareness</5> and promote <7>sustainable solutions</7>.",
-  "aboutProject2": "We provide <1>insights</1> and <3>resources</3> to educate people about these issues and encourage meaningful <5>action</5>."
+
+  "aboutProjectTitle": "What is SDG?",
+  "aboutProject1": "SDG stands for Sustainable Development Goals. These are 17 global goals adopted by the United Nations in 2015 as part of the 2030 Agenda for Sustainable Development. They aim to address major global challenges such as poverty, hunger, inequality, climate change, and environmental protection while promoting peace and prosperity for all.",
+  "aboutProject2": "Why is it important? The Sustainable Development Goals (SDGs) are important because they provide a global roadmap to create a better, more just, and sustainable world by 2030.",
+  
+  "zeroHungerTitle": "Why Is Zero Hunger Important?",
+  "zeroHunger1": "820+ million people worldwide suffer from hunger.",
+  "zeroHunger2": "Malnutrition causes 45% of child deaths globally.",
+  "zeroHunger3": "Food insecurity leads to poverty, conflict, and economic instability.",
+  "zeroHunger4": "Climate change and natural disasters threaten food production.",
+
+  "zeroPovertyTitle": "Why Is Zero Poverty Important?",
+  "zeroPoverty1": "Over 700 million people live in extreme poverty (less than $2.15 per day).",
+  "zeroPoverty2": "Poverty leads to hunger, poor health, lack of education, and social instability.",
+  "zeroPoverty3": "Women and children are most affected by poverty.",
+  "zeroPoverty4": "Economic inequality fuels conflicts, crime, and forced migration.",
+
+  "hungerIncreaseTitle": "Increase in hunger",
+  "hungerIncreaseText": "UN report: 258 million people worldwide are suffering from extreme hunger - 65 million more than last year. This is the worst situation since the report started being published seven years ago. In some countries, such as Yemen, Somalia, and Afghanistan, the situation is so severe that people are dying from hunger every day. The world is under pressure to eradicate hunger by 2030.",
+
+  "causesTitle": "Causes?",
+  "causes1": "Conflicts, rising food prices due to the COVID-19 pandemic and the war in Ukraine, and climate shocks like droughts in Africa and floods in Pakistan."
 }

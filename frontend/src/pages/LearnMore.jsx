@@ -5,19 +5,19 @@ export default function LearnMore() {
   const { t } = useTranslation();
 
   return (
-    <main className="learn-more-page">
-      <div className="learn-more-content">
-        <h1 className="learn-more-heading">{t("learnMoreTitle")}</h1>
-        <p>
-          <Trans i18nKey="learnMore1" components={[<strong />, <strong />, <strong />]} />
-        </p>
-        <p>
-          <Trans i18nKey="learnMore2" components={[<strong />]} />
-        </p>
-        <p>
-          <Trans i18nKey="learnMore3" components={[<strong />]} />
-        </p>
-      </div>
-    </main>
+    <div className="learn-more-wrapper">
+      <main className="learn-more-page">
+        <div className="learn-more-content">
+          <h2 className="learn-more-heading">{t("purposeTitle")}</h2>
+          <p>
+            <Trans i18nKey="purposeParagraph1" components={[<strong />]} />
+          </p>
+          <p>
+            <Trans i18nKey="purposeParagraph2" components={[<strong />]} />
+          </p>
+        </div>
+      </main>
+    </div>
   );
 }
+

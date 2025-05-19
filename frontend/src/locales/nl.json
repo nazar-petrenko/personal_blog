@@ -20,16 +20,37 @@
   "delete": "Verwijderen",
   "confirmDelete": "Weet je zeker dat je dit artikel wilt verwijderen?",
   "deleteError": "Fout bij het verwijderen van het artikel.",
-  "learnMoreTitle": "Meer informatie",
-  "learnMore1": "Meer dan <1>820 miljoen mensen</1> wereldwijd lijden honger. Ondervoeding veroorzaakt wereldwijd <3>45% van de sterfgevallen bij kinderen</3>. Armoede treft meer dan <5>700 miljoen mensen</5>.",
-  "learnMore2": "Ons platform deelt <1>statistieken, oorzaken</1> en de wereldwijde inspanningen om deze problemen aan te pakken.",
-  "learnMore3": "<1>Conflicten, economische instabiliteit, klimaatverandering</1> en stijgende voedselprijzen zijn belangrijke oorzaken.",
+
+  "learnMoreTitle": "Leer Meer",
+  "purposeTitle": "Het Doel van Deze Website",
+  "purposeParagraph1": "Het doel van onze website is eenvoudig: informeren en inspireren tot actie. We bieden waardevolle informatie over de oorzaken van honger en armoede, tonen succesvolle initiatieven en reiken manieren aan waarop individuen, organisaties en gemeenschappen zich kunnen inzetten. Of je nu een student, een activist of gewoon iemand bent die om sociale rechtvaardigheid geeft, we hopen dat ons platform je in staat stelt om een verschil te maken.",
+  "purposeParagraph2": "Samen kunnen we bouwen aan een toekomst waarin niemand honger lijdt en armoede tot het verleden behoort. Sluit je aan bij onze missie om een eerlijkere en duurzamere wereld te creëren!",
 
   "whoWeAreTitle": "Wie zijn wij",
-  "whoWeAre1": "Wij zijn een groep <1>VIVES-studenten</1> die zich inzetten voor een positieve impact op wereldproblemen. Ons doel is om <3>duurzaamheid</3> en <5>sociale verantwoordelijkheid</5> te bevorderen.",
-  "whoWeAre2": "Ons team bestaat uit vier gepassioneerde mensen die geloven dat <1>kennis en actie</1> zinvolle verandering kunnen brengen.",
+  "whoWeAreIntro1": "Wij zijn een groep VIVES-studenten die zich inzetten om een positieve impact te maken op wereldwijde problemen. Als  onderdeel van ons engagement voor duurzaamheid en sociale verantwoordelijkheid hebben we deze website gemaakt om bewustzijn te creëren   over twee van de duurzame ontwikkelingsdoelen (SDG's) van de Verenigde Naties: <1>Geen honger</1> en <1>Geen armoede</1>.",
+  "whoWeAreIntro2": "Ons team bestaat uit vier gepassioneerde mensen die geloven dat <1>kennis en actie</1> zinvolle verandering kunnen   brengen.",
+  "whyWeDoItTitle": "Waarom we dit doen",
+  "whyWeDoItText": "Honger en armoede blijven twee van de meest urgente wereldwijde uitdagingen, die miljoenen mensen wereldwijd treffen.   Wij geloven dat we door <1>anderen te onderwijzen</1>, <3>bewustzijn te verspreiden</3> en <5>duurzame oplossingen te promoten</5> kunnen   bijdragen aan een wereld waarin aan de basisbehoeften van iedereen wordt voldaan.",
 
-  "aboutProjectTitle": "Over het project",
-  "aboutProject1": "<1>Honger</1> en <3>armoede</3> behoren tot de meest urgente mondiale uitdagingen. Ons project wil <5>bewustzijn creëren</5> en <7>duurzame oplossingen</7> bevorderen.",
-  "aboutProject2": "Wij bieden <1>inzichten</1> en <3>bronnen</3> om mensen over deze problemen te informeren en <5>acties</5> aan te moedigen."
+  "aboutProjectTitle": "Wat is SDG?",
+  "aboutProject1": "SDG staat voor Duurzame Ontwikkelingsdoelen. Dit zijn 17 wereldwijde doelen die in 2015 door de Verenigde Naties zijn aangenomen als onderdeel van de Agenda 2030 voor duurzame ontwikkeling. Ze zijn bedoeld om grote wereldwijde uitdagingen aan te pakken zoals armoede, honger, ongelijkheid, klimaatverandering en milieubescherming, terwijl ze vrede en welvaart voor iedereen bevorderen.",
+  "aboutProject2": "Waarom is het belangrijk? De Duurzame Ontwikkelingsdoelen (SDG's) zijn belangrijk omdat ze een mondiale routekaart bieden om tegen 2030 een betere, rechtvaardigere en duurzamere wereld te creëren.",
+  
+  "zeroHungerTitle": "Waarom is nul honger belangrijk?",
+  "zeroHunger1": "Meer dan 820 miljoen mensen wereldwijd lijden aan honger.",
+  "zeroHunger2": "Ondervoeding veroorzaakt 45% van de kindersterfte wereldwijd.",
+  "zeroHunger3": "Voedselonzekerheid leidt tot armoede, conflicten en economische instabiliteit.",
+  "zeroHunger4": "Klimaatverandering en natuurrampen bedreigen de voedselproductie.",
+
+  "zeroPovertyTitle": "Waarom is nul armoede belangrijk?",
+  "zeroPoverty1": "Meer dan 700 miljoen mensen leven in extreme armoede (minder dan $2,15 per dag).",
+  "zeroPoverty2": "Armoede leidt tot honger, slechte gezondheid, gebrek aan onderwijs en sociale instabiliteit.",
+  "zeroPoverty3": "Vrouwen en kinderen worden het meest getroffen door armoede.",
+  "zeroPoverty4": "Economische ongelijkheid voedt conflicten, misdaad en gedwongen migratie.",
+
+  "hungerIncreaseTitle": "Toename van honger",
+  "hungerIncreaseText": "VN-rapport: 258 miljoen mensen wereldwijd lijden aan extreme honger - 65 miljoen meer dan vorig jaar. Dit is de ergste situatie sinds het rapport zeven jaar geleden werd gepubliceerd. In sommige landen, zoals Jemen, Somalië en Afghanistan, is de situatie zo ernstig dat mensen elke dag sterven van honger. De wereld staat onder druk om honger tegen 2030 uit te roeien.",
+
+  "causesTitle": "Oorzaken?",
+  "causes1": "Conflicten, stijgende voedselprijzen door de COVID-19-pandemie en de oorlog in Oekraïne, en klimaatsschokken zoals droogte in Afrika en overstromingen in Pakistan."
 }
