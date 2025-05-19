@@ -12,7 +12,7 @@ db.all(
   [articleId],
   (err, rows) => {
     if (err) {
-      console.error("🔥 DB error in getCommentsByArticleId:", err); // додано
+      console.error(" DB error in getCommentsByArticleId:", err); // додано
       return res.status(500).json({ message: 'DB error' });
     }
     res.json(rows);

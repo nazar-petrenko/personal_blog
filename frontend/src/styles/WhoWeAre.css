@@ -102,14 +102,23 @@
 }
 
 .gallery-nav {
-  background: none;
-  border: none;
-  position: absolute;
+ position: absolute;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #7c3aed;
-  transition: transform 0.2s;
+  color: #7c3aed; /* фіолетовий */
+  background-color: rgba(255 255 255 / 0.9); /* напівпрозорий світлий фон */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  padding: 0;
+  user-select: none;
 }
 
 .gallery-nav.left {
@@ -122,4 +131,89 @@
 
 .gallery-nav:hover {
   transform: translateY(-50%) scale(1.2);
+}
+/* Адаптивність для мобільних */
+@media (max-width: 480px) {
+  .who-we-are-wrapper {
+    padding: 40px 15px 30px;
+  }
+
+  .who-we-are-page {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .who-we-are-content {
+    padding: 2rem 1.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .who-we-are-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .who-we-are-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .who-we-are-subheading {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+ .who-we-are-gallery-slider {
+    margin-top: 1.5rem;
+    flex-direction: column;
+    position: relative;
+    /* Щоб кнопки були позиціоновані відносно слайдера */
+  }
+
+  .slider-image {
+    max-height: 300px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+    /* Контейнер кнопок знизу */
+  .gallery-nav-container {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+  }
+
+  .gallery-nav {
+    position: static;           /* скидаємо absolute */
+    background: rgba(0, 0, 0, 0.7); /* фон для зручності натискання */
+    color: white;               /* білий колір стрілок */
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+  }
+
+  .gallery-nav:hover {
+    background: rgba(56, 56, 56, 0.9);
+    color: white;
+  }
+  .gallery-nav-container {
+    z-index: 20;
+  }
+
+  .gallery-nav {
+    z-index: 30;
+  }
 }

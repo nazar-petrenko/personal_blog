@@ -1,29 +1,32 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useApi } from "../hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const RegisterForm = ({ close }) => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
-  const api = useApi(); 
+  const api = useApi();
+  const { t } = useTranslation();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       if (!email.includes("@")) {
-        alert("Некоректна пошта");
+        alert(t("registerWindow.invalidEmail"));
         return;
       }
       if (password.length < 8 || !/[A-Z]/.test(password)) {
-        alert("Пароль повинен містити більше 8 символів і мінімум одну велику літеру");
+        alert(t("registerWindow.invalidPassword"));
         return;
       }
       if (nickname.length < 3) {
-        alert("Нікнейм має містити мінімум 3 символи");
+        alert(t("registerWindow.invalidNickname"));
         return;
       }
+
       const res = await api.post("/auth/register", {
         email,
         password,
@@ -37,36 +40,34 @@ const RegisterForm = ({ close }) => {
     }
   };
 
-
   return (
     <div className="auth-popup">
-      <h2>Register</h2>
+      <h2>{t("registerWindow.title")}</h2>
       <form onSubmit={handleRegister} className="auth-form">
         <input
           type="email"
-          placeholder="Email"
+          placeholder={t("registerWindow.email")}
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Nickname"
+          placeholder={t("registerWindow.nickname")}
           value={nickname}
           required
           onChange={(e) => setNickname(e.target.value)}
         />
-
         <input
           type="password"
-          placeholder="Password"
+          placeholder={t("registerWindow.password")}
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button type="submit">{t("registerWindow.submit")}</button>
         <button type="button" onClick={close} className="cancel-btn">
-          Cancel
+          {t("registerWindow.cancel")}
         </button>
       </form>
     </div>

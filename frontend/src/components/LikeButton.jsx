@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import { useApi } from "../hooks/useApi";
 import { useAuth } from "../context/AuthContext";
 import "../styles/LikeButton.css";
+import { useTranslation } from "react-i18next";
+
 export default function LikeButton({ articleId }) {
   const { user } = useAuth();
   const api = useApi();
+  const { t } = useTranslation(); // ➕ функція перекладу
 
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -27,16 +30,15 @@ export default function LikeButton({ articleId }) {
   const checkIfLiked = async () => {
     try {
       const res = await api.get(`/articles/${articleId}/isLiked`);
-      setLiked(res.data.liked); // true/false
+      setLiked(res.data.liked); 
     } catch (err) {
-      // якщо 401 або 404, просто не відображаємо liked
       setLiked(false);
     }
   };
 
   const handleClick = async () => {
     if (!user) {
-      alert("Увійдіть, щоб ставити лайки");
+      alert(t("likeLoginRequired")); 
       return;
     }
 

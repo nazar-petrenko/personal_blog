@@ -81,3 +81,92 @@
 .comments-area {
   margin-top: 3rem;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: zoom-out;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.2);
+  animation: scaleIn 0.3s ease-in-out;
+}
+
+/* Optional animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ==== Мобільна адаптація ==== */
+@media (max-width: 480px) {
+  .article-view-page {
+    margin: 20px 10px;
+    padding: 0 10px;
+  }
+
+  .article-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .article-preview {
+    max-height: 200px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+
+  .article-markdown {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-markdown h2, .article-markdown h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
+
+  .gallery-image {
+    height: 80px;
+    border-radius: 6px;
+  }
+
+  .article-bottom {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .like-area {
+    font-size: 1rem;
+  }
+
+  .comments-area {
+    margin-top: 2rem;
+  }
+}

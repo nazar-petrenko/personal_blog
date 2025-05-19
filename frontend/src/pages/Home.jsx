@@ -15,12 +15,18 @@ export default function Home() {
               We raise awareness of two crucial global goals: <strong>No Hunger</strong> and <strong>No Poverty</strong>.
             </Trans>
           </p>
-          <Link to="/learn-more" className="home-btn">
-            {t("learnMore")}
+
+          <div className="home-flags">
+            <img src="/be.png" alt="Belgium" title="België" />
+            <img src="/es.png" alt="Spain" title="España" />
+            <img src="/ua.png" alt="Ukraine" title="Україна" />
+          </div>
+
+          <Link to="/about-project" className="home-btn">
+            {t("aboutProject")}
           </Link>
         </div>
       </main>
     </div>
-    
   );
 }

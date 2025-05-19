@@ -78,33 +78,41 @@ db.serialize(() => {
   `);
 
 
+const admins = [
+    {
+      email: process.env.ADMIN1_EMAIL,
+      password: process.env.ADMIN1_PASSWORD,
+      nickname: 'admin',
+    },
+    {
+      email: process.env.ADMIN2_EMAIL,
+      password: process.env.ADMIN2_PASSWORD,
+      nickname: 'adminSec',
+    },
+  ];
 
-  // --- Додавання адміністратора, якщо його ще немає ---
-  const adminEmail = 'admin@example.com';
-  const adminPassword = 'admin123'; // ❗ змінити перед продакшеном
-  const adminNickname = 'admin';
-
-  db.get(`SELECT * FROM users WHERE email = ?`, [adminEmail], async (err, row) => {
-    if (err) {
-      console.error('❌ Error checking admin user:', err);
-    } else if (!row) {
-      const hashedPassword = await bcrypt.hash(adminPassword, 10);
-      db.run(
-        `INSERT INTO users (email, password, nickname, role) VALUES (?, ?, ?, ?)`,
-        [adminEmail, hashedPassword, adminNickname, 'admin'],
-        (err) => {
-          if (err) {
-            console.error('❌ Failed to create admin user:', err);
-          } else {
-            console.log(`✅ Admin user created (${adminEmail} / ${adminPassword})`);
+  admins.forEach(({ email, password, nickname }) => {
+    db.get(`SELECT * FROM users WHERE email = ?`, [email], async (err, row) => {
+      if (err) {
+        console.error(`❌ Error checking user ${email}:`, err);
+      } else if (!row) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        db.run(
+          `INSERT INTO users (email, password, nickname, role) VALUES (?, ?, ?, ?)`,
+          [email, hashedPassword, nickname, 'admin'],
+          (err) => {
+            if (err) {
+              console.error(`❌ Failed to create admin ${email}:`, err);
+            } else {
+              console.log(`✅ Admin created: ${email}`);
+            }
           }
-        }
-      );
-    } else {
-      console.log(`ℹ️ Admin user already exists: ${adminEmail}`);
-    }
-  })
-
+        );
+      } else {
+        console.log(`ℹ️ Admin already exists: ${email}`);
+      }
+    });
+  });
 });
 
 module.exports = db;

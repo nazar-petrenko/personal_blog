@@ -4,9 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useTranslation } from "react-i18next";
 import LoginForm from "../pages/LoginForm";
 import RegisterForm from "../pages/RegisterForm";
-import { FaFacebookF, FaTwitter, FaYoutube, FaRss } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import '../assets/logo_blog.svg';
 import "../styles/Navbar.css";
 
 export default function Navbar() {
@@ -42,20 +40,32 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <div className="nav-brand">
-          <img src="src/assets/logo.png" alt="Logo" />
+          <img src="/logo.png" alt="Logo" />
         </div>
 
         <GiHamburgerMenu className="burger-icon" onClick={toggleMobileMenu} />
 
         <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
-          <NavLink to="/" className="nav-link" onClick={handleNavLinkClick}>{t("home")}</NavLink>
-          <NavLink to="/who-we-are" className="nav-link" onClick={handleNavLinkClick}>{t("whoWeAre")}</NavLink>
-          <NavLink to="/articles" className="nav-link" onClick={handleNavLinkClick}>{t("articles")}</NavLink>
-          <NavLink to="/about-project" className="nav-link" onClick={handleNavLinkClick}>{t("aboutProject")}</NavLink>
-          <NavLink to="/learn-more" className="nav-link" onClick={handleNavLinkClick}>{t("learnMore")}</NavLink>
-          {user?.role === "admin" && (
-            <NavLink to="/admin/add-article" className="nav-link" onClick={handleNavLinkClick}>{t("addArticle")}</NavLink>
-          )}
+          {[
+            { to: "/", label: t("home") },
+            { to: "/who-we-are", label: t("whoWeAre") },
+            { to: "/articles", label: t("articles") },
+            { to: "/about-project", label: t("aboutProject") },
+            { to: "/learn-more", label: t("learnMore") },
+            ...(user?.role === "admin"
+              ? [{ to: "/admin/add-article", label: t("addArticle") }]
+              : [])
+          ].map((link, i) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className="nav-link"
+              style={{ "--i": i }}
+              onClick={handleNavLinkClick}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </div>
       </div>
 

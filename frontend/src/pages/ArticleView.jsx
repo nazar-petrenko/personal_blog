@@ -4,12 +4,15 @@ import ReactMarkdown from "react-markdown";
 import Comments from "../components/Comments";
 import LikeButton from "../components/LikeButton";
 import { useAuth } from "../context/AuthContext";
+import { useTranslation } from "react-i18next"; // ➕ Додано
 import "../styles/ArticleView.css";
 
 export default function ArticleView() {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
   const { user: currentUser } = useAuth();
+  const [activeImage, setActiveImage] = useState(null);
+  const { t } = useTranslation(); // ➕ Отримуємо функцію перекладу
 
   useEffect(() => {
     fetch(`/api/articles/${id}`)
@@ -17,7 +20,9 @@ export default function ArticleView() {
       .then((data) => setArticle(data));
   }, [id]);
 
-  if (!article) return <p>Loading...</p>;
+  const closeModal = () => setActiveImage(null);
+
+  if (!article) return <p>{t("loading")}</p>; // 🈯 Перекладено
 
   return (
     <div className="article-view-page">
@@ -37,7 +42,7 @@ export default function ArticleView() {
 
       {article.images?.length > 0 && (
         <div className="gallery">
-          <h4>Галерея:</h4>
+          <h4>{t("gallery")}:</h4>
           <div className="gallery-grid">
             {article.images.map((img, idx) => (
               <img
@@ -45,9 +50,16 @@ export default function ArticleView() {
                 src={img}
                 alt={`gallery-${idx}`}
                 className="gallery-image"
+                onClick={() => setActiveImage(img)}
               />
             ))}
           </div>
+        </div>
+      )}
+
+      {activeImage && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <img src={activeImage} alt="Enlarged view" className="modal-image" />
         </div>
       )}
 

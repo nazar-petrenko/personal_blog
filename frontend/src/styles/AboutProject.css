@@ -46,3 +46,31 @@
   color: #2f855a;
   font-weight: 600;
 }
+@media (max-width: 480px) {
+  .about-project-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .about-project-page {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .about-project-content {
+    padding: 2rem 1.2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  }
+
+  .about-project-heading {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-project-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}

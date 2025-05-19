@@ -1,4 +1,22 @@
 {
+  "registerWindow": {
+    "title": "Registreren",
+    "email": "E-mail",
+    "nickname": "Bijnaam",
+    "password": "Wachtwoord",
+    "submit": "Registreren",
+    "cancel": "Annuleren",
+    "invalidEmail": "Ongeldig e-mailadres",
+    "invalidPassword": "Wachtwoord moet minimaal 8 tekens bevatten en ten minste één hoofdletter",
+    "invalidNickname": "Bijnaam moet minimaal 3 tekens bevatten"
+  },
+  "loginWindow": {
+    "title": "Inloggen",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "submit": "Inloggen",
+    "cancel": "Annuleren"
+  },
   "home": "Startpagina",
   "whoWeAre": "Wie zijn wij",
   "articles": "Artikelen",
@@ -21,6 +39,15 @@
   "confirmDelete": "Weet je zeker dat je dit artikel wilt verwijderen?",
   "deleteError": "Fout bij het verwijderen van het artikel.",
 
+  "loading": "Laden...",
+  "gallery": "Galerij",
+  "commentsTitle": "Reacties",
+  "placeholderComment": "Schrijf een reactie...",
+  "publish": "Publiceren",
+  "anonymous": "Anoniem",
+  "deleteErrorUser": "Verwijderen mislukt.",
+  "addCommentError": "Reactie kon niet worden toegevoegd.",
+  "likeLoginRequired": "Log in om artikelen leuk te vinden.",
   "learnMoreTitle": "Leer Meer",
   "purposeTitle": "Het Doel van Deze Website",
   "purposeParagraph1": "Het doel van onze website is eenvoudig: informeren en inspireren tot actie. We bieden waardevolle informatie over de oorzaken van honger en armoede, tonen succesvolle initiatieven en reiken manieren aan waarop individuen, organisaties en gemeenschappen zich kunnen inzetten. Of je nu een student, een activist of gewoon iemand bent die om sociale rechtvaardigheid geeft, we hopen dat ons platform je in staat stelt om een verschil te maken.",

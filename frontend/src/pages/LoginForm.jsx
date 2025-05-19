@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useApi } from "../hooks/useApi";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = ({ close }) => {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const api = useApi(); 
+  const api = useApi();
+  const { t } = useTranslation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,30 +19,31 @@ const LoginForm = ({ close }) => {
       close();
     } catch (err) {
       console.error("Login error:", err.response?.data || err.message);
+      alert("Login error(try to register)");
     }
   };
 
   return (
     <div className="auth-popup">
-      <h2>Login</h2>
+      <h2>{t("loginWindow.title")}</h2>
       <form onSubmit={handleLogin} className="auth-form">
         <input
           type="email"
-          placeholder="Email"
+          placeholder={t("loginWindow.email")}
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder={t("loginWindow.password")}
           value={password}
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">{t("loginWindow.submit")}</button>
         <button type="button" onClick={close} className="cancel-btn">
-          Cancel
+          {t("loginWindow.cancel")}
         </button>
       </form>
     </div>

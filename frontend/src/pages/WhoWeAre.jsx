@@ -49,15 +49,21 @@ export default function WhoWeAre() {
           </p>
 
           {images.length > 0 && (
-            <div className="who-we-are-gallery">
-              <button onClick={handlePrev} className="gallery-nav left"><ChevronLeft size={32} /></button>
+            <div className="who-we-are-gallery-slider">
               <img
-                className="whoweare-image"
+                className="slider-image"
                 src={images[currentIndex].url}
                 alt={images[currentIndex].alt || "Gallery Image"}
                 loading="lazy"
               />
-              <button onClick={handleNext} className="gallery-nav right"><ChevronRight size={32} /></button>
+              <div className="gallery-nav-container">
+                <button onClick={handlePrev} className="gallery-nav left">
+                  <ChevronLeft size={24} color="currentColor" />
+                </button>
+                <button onClick={handleNext} className="gallery-nav right">
+                  <ChevronRight size={24} color="currentColor" className="rightBtn"/>
+                </button>
+              </div>
             </div>
           )}
         </div>
