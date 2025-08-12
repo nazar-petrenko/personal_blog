@@ -104,14 +104,3 @@ npm run dev
 | DELETE | `/api/articles/:id`  | Delete article (admin) |
 | POST   | `/api/likes/:id`     | Like an article |
 | POST   | `/api/comments/:id`  | Add comment |
-
----
-
-## 📸 Screenshots
-
-*(Add screenshots here if you have them)*
-
----
-
-## 📄 License
-This project is licensed under the MIT License.
